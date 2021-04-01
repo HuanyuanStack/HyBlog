@@ -39,7 +39,7 @@ logger.add(os.path.join(LOG_DIR, 'error.log'), rotation='1 days',
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ejvv5g+59hj6ul(!e_fjlp@m7k-5rq4!bd@xglb0&#$i&dh@*z'
+SECRET_KEY = CONFIG.get('common', 'secretkey')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = CONFIG.getboolean('common', 'debug')
