@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Index - HyBlog</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if lte IE 8]><script src="{% static 'hyblog/ie/html5shiv.js' %}"></script><![endif]-->
+    <link rel="stylesheet" href="{% static 'hyblog/css/main.css' %}">
+    <!--[if lte IE 9]><link rel="stylesheet" href="{% static 'hyblog/ie/ie9.css' %}" /><![endif]-->
+</head>
+<body class="">
+
+    <!-- Header -->
+    <header id="header" class="skel-layers-fixed">
+        <h1>HyBlog</h1>
+        <a href="{% url 'blog_app:go_add_user' %}">Add User</a>
+    </header>
+
+    <!-- Nav -->
+
+
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="container">
+            <section>
+                <div class="table-wrapper">
+                    <table class="alt">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nickname</th>
+                                <th>Country</th>
+                                <th>Address</th>
+                                <th>Create Date</th>
+                                <th>Update Date</th>
+                            </tr>
+                        </thead>
+                        {% for address in address_list %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{address.user.nickname_text}}</td>
+                            <td>{{address.country_text}}</td>
+                            <td>{{address.address_text}}</td>
+                            <td>{{address.user.create_date}}</td>
+                            <td>{{address.user.update_date}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </section>
+        </div
+    </section>
+    
+    <!-- Footer -->
+    
+    <!-- Scripts -->
+    <script src="{% static 'jquery/3.6.0/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'skel/3.0.1/skel.min.js' %}"></script>
+    <script src="{% static 'hyblog/js/util.js' %}"></script>
+    <script src="{% static 'hyblog/js/main.js' %}"></script>
+</body>
+</html>

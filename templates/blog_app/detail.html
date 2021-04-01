@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Add User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if lte IE 8]><script src="{% static 'hyblog/ie/html5shiv.js' %}"></script><![endif]-->
+    <link rel="stylesheet" href="{% static 'hyblog/css/main.css' %}">
+    <!--[if lte IE 9]><link rel="stylesheet" href="{% static 'hyblog/ie/ie9.css' %}" /><![endif]-->
+</head>
+<body>
+<!-- Header -->
+    <header id="header" class="skel-layers-fixed">
+        <h1>Add User - HyBlog</h1>
+        <a href="{% url 'blog_app:index' %}">Back</a>
+    </header>
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="container">
+
+            {% if error_message %}<blockquote>{{ error_message }}</blockquote>{% endif %}
+
+            <form action="{% url 'blog_app:add_user' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row uniform 50%">
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" name="nickname" id="nickname" value="" placeholder="Nickname">
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <div class="select-wrapper">
+                            <select name="country" id="country">
+                                <option value="">- Country -</option>
+                                <option value="CHN">CHN</option>
+                                <option value="PRK">PRK</option>
+                                <option value="JPN">JPN</option>
+                                <option value="KOR">KOR</option>
+                                <option value="FRA">FRA</option>
+                                <option value="RUS">RUS</option>
+                                <option value="USA">USA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="12u$">
+                        <input type="text" name="address" id="address" value="" placeholder="Address">
+                    </div>
+
+                    <div class="12u$">
+                        <ul class="actions">
+                            <li><input type="submit" value="Add User" class="special"></li>
+                            <li><input type="reset" value="Reset"></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div
+    </section>
+
+    <!-- Scripts -->
+    <script src="{% static 'jquery/3.6.0/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'skel/3.0.1/skel.min.js' %}"></script>
+    <script src="{% static 'hyblog/js/util.js' %}"></script>
+    <script src="{% static 'hyblog/js/main.js' %}"></script>
+
+</body>
+</html>
